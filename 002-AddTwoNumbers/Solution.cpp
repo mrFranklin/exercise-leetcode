@@ -2,7 +2,7 @@
 * @Author: Franklin
 * @Date:   2017-08-24 17:24:30
 * @Last Modified by:   Franklin
-* @Last Modified time: 2017-08-24 20:12:39
+* @Last Modified time: 2017-08-24 20:18:28
 */
 
 #include <iostream>
@@ -17,18 +17,19 @@ struct ListNode {
 
 class Solution {
 private:
-    void setNextDataAndMove(ListNode **p, int data) {
+    void setNextDataAndMove(ListNode **header, ListNode **p, int data) {
         ListNode *node = new ListNode(data);
-        if ((*p)->next == NULL) {
-            (*p)->next = node;
+        if ((*header) == NULL) {
+            *header = node;
+            (*p) = node;
         } else {
-            (*p)->next->next = node;
+            (*p)->next = node;
             (*p) = (*p)->next;
         }
     }
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* lRet = new ListNode(0);
+        ListNode* lRet = NULL;
         ListNode* p = lRet;
         int carry = 0;
         int data;
@@ -44,15 +45,15 @@ public:
                 l1 = l1->next;
                 l2 = l2->next; 
             }
-            setNextDataAndMove(&p, data % 10);
+            setNextDataAndMove(&lRet, &p, data % 10);
             carry = data / 10;
         }
 
         if (carry != 0) {
-            setNextDataAndMove(&p, carry);
+            setNextDataAndMove(&lRet, &p, carry);
         }
 
-        return lRet->next;
+        return lRet;
     }
 };
 

@@ -2,7 +2,7 @@
 * @Author: Franklin
 * @Date:   2017-08-24 14:11:32
 * @Last Modified by:   Franklin
-* @Last Modified time: 2017-08-24 15:45:26
+* @Last Modified time: 2017-08-24 21:06:24
 */
 
 /*
@@ -24,17 +24,14 @@ import java.util.Map;
 
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] ret = new int[2];
         Map<Integer, Integer> positonMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (positonMap.get(nums[i]) != null) {
-                ret[0] = positonMap.get(nums[i]);
-                ret[1] = i;
-            } else {
-                positonMap.put(target - nums[i], i);
+            if (positonMap.containsKey(nums[i])) {
+                return new int[]{positonMap.get(nums[i]), i};
             }
+            positonMap.put(target - nums[i], i);
         }
-        return ret;
+        throw new IllegalArgumentException("No solution");
     }
 
     public static void main(String[] args) {

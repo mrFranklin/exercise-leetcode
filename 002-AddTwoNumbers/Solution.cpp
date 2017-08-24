@@ -2,7 +2,7 @@
 * @Author: Franklin
 * @Date:   2017-08-24 17:24:30
 * @Last Modified by:   Franklin
-* @Last Modified time: 2017-08-24 20:10:41
+* @Last Modified time: 2017-08-24 20:12:39
 */
 
 #include <iostream>
@@ -44,13 +44,8 @@ public:
                 l1 = l1->next;
                 l2 = l2->next; 
             }
-            if (data >= 10) {
-                carry = 1;
-                data -= 10;
-            } else {
-                carry = 0;
-            }
-            setNextDataAndMove(&p, data);
+            setNextDataAndMove(&p, data % 10);
+            carry = data / 10;
         }
 
         if (carry != 0) {

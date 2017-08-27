@@ -2,7 +2,7 @@
 * @Author: Franklin
 * @Date:   2017-08-26 20:53:03
 * @Last Modified by:   Franklin
-* @Last Modified time: 2017-08-27 21:01:07
+* @Last Modified time: 2017-08-27 21:01:46
 */
 
 /*
@@ -43,7 +43,7 @@ public:
     }
 };
 
-int main(){
+int main() {
     Solution so;
     string s = "abcdefbef";
     int ret = so.lengthOfLongestSubstring(s);
